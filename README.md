@@ -89,6 +89,25 @@ This project follows Clean Architecture principles with three main layers:
 - Domain Layer (Business Logic)
 - Data Layer (Data Access)
 
+## Screenshots
+
+<table>
+  <tr>
+    <td><img src="screenshots/1.png" width="200"/></td>
+    <td><img src="screenshots/2.png" width="200"/></td>
+    <td><img src="screenshots/5.png" width="200"/></td>
+    <td><img src="screenshots/3.png" width="200"/></td>
+    <td><img src="screenshots/4.png" width="200"/></td>
+  </tr>
+  <tr>
+    <td align="center">Overview Screen</td>
+    <td align="center">Hotel Listing</td>
+    <td align="center">Hotel Listing</td>
+    <td align="center">Favorites</td>
+    <td align="center">Favorites Empty</td>
+  </tr>
+</table>
+
 ## Testing
 
 Run tests using:
