@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hotel_booking/core/router/app_router.dart';
 import 'package:hotel_booking/core/theme/app_theme.dart';
 import 'package:hotel_booking/di.dart';
+import 'package:hotel_booking/presentation/bloc/favorite/favorite_bloc.dart';
 import 'package:hotel_booking/presentation/bloc/hotel/hotel_bloc.dart';
 
 void main() async {
@@ -25,6 +26,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<HotelBloc>(
           create: (final context) => di<HotelBloc>(),
+        ),
+        BlocProvider<FavoriteBloc>(
+          create: (final context) => di<FavoriteBloc>(),
         ),
       ],
       child: MaterialApp.router(

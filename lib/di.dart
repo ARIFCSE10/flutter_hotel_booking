@@ -5,9 +5,11 @@ import 'package:hotel_booking/data/datasources/hotel_remote_data_source.dart';
 import 'package:hotel_booking/data/models/hotel_model.dart';
 import 'package:hotel_booking/data/repositories/hotel_repository_impl.dart';
 import 'package:hotel_booking/domain/repositories/hotel_repository.dart';
+import 'package:hotel_booking/domain/usecases/get_favorite_hotels_usecase.dart';
 import 'package:hotel_booking/domain/usecases/get_hotels_usecase.dart';
 import 'package:hotel_booking/domain/usecases/remove_favorite_usecase.dart';
 import 'package:hotel_booking/domain/usecases/set_favorite_usecase.dart';
+import 'package:hotel_booking/presentation/bloc/favorite/favorite_bloc.dart';
 import 'package:hotel_booking/presentation/bloc/hotel/hotel_bloc.dart';
 
 final di = GetIt.instance;
@@ -42,6 +44,10 @@ Future<void> init() async {
   );
 
   di.registerLazySingleton(
+    () => GetFavoriteHotelsUseCase(di()),
+  );
+
+  di.registerLazySingleton(
     () => SetFavoriteUseCase(di()),
   );
 
@@ -55,6 +61,14 @@ Future<void> init() async {
       getHotelsUseCase: di(),
       setFavoriteUseCase: di(),
       removeFavoriteUseCase: di(),
+    ),
+  );
+
+  di.registerSingleton<FavoriteBloc>(
+    FavoriteBloc(
+      getFavoriteHotelsUseCase: di(),
+      removeFavoriteUseCase: di(),
+      hotelBloc: di(),
     ),
   );
 }
