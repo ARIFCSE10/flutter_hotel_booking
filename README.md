@@ -1,16 +1,105 @@
-# hotel_booking
+# Hotel Booking App
 
-A new Flutter project.
+A Flutter application for hotel bookings with clean architecture and BLoC pattern.
+
+## Features
+
+- Bottom Navigation with 4 tabs (Overview, Hotels, Favourites, Account)
+- Hotel listing with search functionality
+- Favorite hotels management
+- Clean and intuitive UI
+- Offline support for favorite hotels
+- Error handling with retry mechanism
+
+## Tech Stack
+
+- Flutter
+- BLoC for state management
+- Auto Route for navigation
+- Hive for local storage
+- Dio for API calls
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter SDK (latest version)
+- Dart SDK (latest version)
+- Android Studio / VS Code
+- iOS Simulator / Android Emulator
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Installation
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Clone the repository:
+```bash
+git clone [repository-url]
+```
+
+2. Navigate to project directory:
+```bash
+cd hotel_booking
+```
+
+3. Clean build directory:
+```bash
+flutter clean
+```
+
+4. Install dependencies:
+```bash
+flutter pub get
+```
+
+5. Run build runner:
+```bash
+dart run build_runner build --delete-conflicting-outputs
+```
+
+6. Run app:
+```bash
+flutter run
+```
+
+
+## Project Structure
+
+```
+lib/
+├── core/           # App-wide constants, utilities, and configurations
+├── data/           # Data layer
+│   ├── datasources/    # Remote and local data sources
+│   ├── models/         # Data models
+│   └── repositories/   # Repository implementations
+├── domain/        # Business logic layer
+│   ├── entities/      # Business objects
+│   ├── repositories/  # Repository interfaces
+│   └── usecases/     # Use cases
+└── presentation/  # UI layer
+    ├── bloc/         # BLoC state management
+    ├── pages/        # Screen widgets
+    └── widgets/      # Reusable widgets
+di.dart                # Dependency injection
+main.dart              # Entry point
+```
+
+## Architecture
+
+This project follows Clean Architecture principles with three main layers:
+- Presentation Layer (UI)
+- Domain Layer (Business Logic)
+- Data Layer (Data Access)
+
+## Testing
+
+Run tests using:
+```bash
+flutter test
+```
+
+## Contributing
+
+1. Fork the Project
+2. Create your Feature Branch
+3. Commit your Changes
+4. Push to the Branch
+5. Open a Pull Request
