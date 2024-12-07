@@ -56,47 +56,45 @@ class HotelCard extends StatelessWidget {
                   },
                 ),
               ),
-            Stack(
+            Row(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Text(
-                              hotel.name,
-                              style: Theme.of(context).textTheme.titleLarge,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                hotel.name,
+                                style: Theme.of(context).textTheme.titleLarge,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        hotel.description,
-                        style: Theme.of(context).textTheme.bodyMedium,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          hotel.description,
+                          style: Theme.of(context).textTheme.bodyMedium,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                Positioned(
-                  top: 8,
-                  right: 8,
-                  child: IconButton(
-                    key: Key('favorite_button_${hotel.id}'),
-                    icon: Icon(
-                      hotel.isFavorite ? Icons.favorite : Icons.favorite_border,
-                      color: hotel.isFavorite ? Colors.red : null,
-                    ),
-                    onPressed: onFavoritePressed,
+                IconButton(
+                  key: Key('favorite_button_${hotel.id}'),
+                  icon: Icon(
+                    hotel.isFavorite ? Icons.favorite : Icons.favorite_border,
+                    color: hotel.isFavorite ? Colors.red : null,
                   ),
+                  onPressed: onFavoritePressed,
                 ),
               ],
             ),

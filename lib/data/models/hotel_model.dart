@@ -36,6 +36,16 @@ class HotelModel {
     );
   }
 
+  factory HotelModel.fromJson(final Map<String, dynamic> json) {
+    return HotelModel(
+      id: "${json['hotel_id']}",
+      name: json['property']['name'],
+      description: json['accessibilityLabel'],
+      image: json['property']['photoUrls'][0],
+      isFavorite: false,
+    );
+  }
+
   HotelModel copyWith({
     final String? id,
     final String? name,

@@ -1,5 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hotel_booking/core/util/int.dart';
 import 'package:hotel_booking/data/datasources/hotel_local_data_source.dart';
 import 'package:hotel_booking/data/datasources/hotel_remote_data_source.dart';
 import 'package:hotel_booking/data/models/hotel_model.dart';
@@ -21,13 +23,29 @@ Future<void> init() async {
   //Local Data
   final hotelBox = await Hive.openBox<HotelModel>('favorites');
 
+  //Rest client
+  di.registerLazySingleton(
+    () => Dio(
+      BaseOptions(
+        connectTimeout: 30.seconds,
+        receiveTimeout: 15.seconds,
+      ),
+    ),
+  );
+
   // Data sources
   di.registerLazySingleton<HotelLocalDataSource>(
     () => HotelLocalDataSourceImpl(hotelBox: hotelBox),
   );
 
+  // di.registerLazySingleton<HotelRemoteDataSource>(
+  //   () => HotelRemoteDataSourceMockImpl(),
+  // );
+
   di.registerLazySingleton<HotelRemoteDataSource>(
-    () => HotelRemoteDataSourceMockImpl(),
+    () => HotelRemoteDataSourceImpl(
+      dio: di(),
+    ),
   );
 
   // Repository
